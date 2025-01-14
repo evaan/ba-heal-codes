@@ -31,64 +31,49 @@ public class HealCodeOverlay extends OverlayPanel {
         panelComponent.getChildren().clear();
         panelComponent.setPreferredSize(new Dimension(150,0));
 
-        boolean hasHealerHorn = false;
-
-        final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
-        if (itemContainer == null) {
-            return null;
-        }
-
-        for (Item item : itemContainer.getItems()) {
-            final int id = item.getId();
-            if (id >= 10526 && id <= 10530) {
-                hasHealerHorn = true;
-                break;
-            }
-        }
-
-        if (!hasHealerHorn) return null;
+        if (!plugin.hasHealerHorn) return null;
 
         switch (plugin.wave) {
             case 4:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 4 - " + config.wave4().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave4().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave4().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 5:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 5 - " + config.wave5().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave5().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave5().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 6:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 6 - " + config.wave6().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave6().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave6().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 7:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 7 - " + config.wave7().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave7().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave7().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 8:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 8 - " + config.wave8().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave8().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave8().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 9:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 9 - " + config.wave9().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave9().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave9().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             case 10:
                 panelComponent.getChildren().add(TitleComponent.builder().text("Wave 10 - " + config.wave10().getName()).color(ColorScheme.BRAND_ORANGE).build());
-                for (String line : config.wave10().getCode().split("\n")) {
-                    panelComponent.getChildren().add(LineComponent.builder().left(line).build());
+                for (LineComponent line : config.wave10().getLines()) {
+                    panelComponent.getChildren().add(line);
                 }
                 break;
             default:

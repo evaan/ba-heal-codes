@@ -54,10 +54,25 @@ public class BAHealCodesPlugin extends Plugin
 	private static final Pattern wavePattern = Pattern.compile(".*---- Wave: (10|[1-9]) ----.*");
 
 	public int wave = 0;
+	public boolean hasHealerHorn = false;
 
 	@Subscribe
 	public void onGameTick(GameTick event) {
 		if (wave != 0 && !ArrayUtils.contains(client.getMapRegions(), 7509) && !ArrayUtils.contains(client.getMapRegions(), 7508)) wave = 0;
+
+		final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
+		if (itemContainer == null) {
+			hasHealerHorn = false;
+			return;
+		}
+
+		for (Item item : itemContainer.getItems()) {
+			final int id = item.getId();
+			if (id >= 10526 && id <= 10530) {
+				hasHealerHorn = true;
+				break;
+			}
+		}
 	}
 
 	@Subscribe
