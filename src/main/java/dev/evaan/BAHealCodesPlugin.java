@@ -5,7 +5,6 @@ import javax.inject.Inject;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
 import net.runelite.api.events.ChatMessage;
-import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.client.config.ConfigManager;
 import net.runelite.client.eventbus.Subscribe;
@@ -25,9 +24,6 @@ public class BAHealCodesPlugin extends Plugin
 {
 	@Inject
 	private Client client;
-
-	@Inject
-	private BAHealCodesConfig config;
 
 	@Inject
 	private OverlayManager overlayManager;
@@ -58,7 +54,7 @@ public class BAHealCodesPlugin extends Plugin
 
 	@Subscribe
 	public void onGameTick(GameTick event) {
-		if (wave != 0 && !ArrayUtils.contains(client.getMapRegions(), 7509) && !ArrayUtils.contains(client.getMapRegions(), 7508)) wave = 0;
+		if (wave != 0 && !ArrayUtils.contains(client.getTopLevelWorldView().getMapRegions(), 7509) && !ArrayUtils.contains(client.getTopLevelWorldView().getMapRegions(), 7508)) wave = 0;
 
 		final ItemContainer itemContainer = client.getItemContainer(InventoryID.INVENTORY);
 		if (itemContainer == null) {
